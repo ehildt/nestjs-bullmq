@@ -61,7 +61,7 @@
     "@types/eslint": "^9.6.1",
     "@types/node": "^25.5.0",
     "@vitest/coverage-v8": "4.1.1",
-    "bullmq": "^5.71.0",
+    "bullmq": "^5.71.1",
     "depcheck": "^1.4.7",
     "dependency-cruiser": "^17.3.9",
     "eslint": "^10.1.0",
