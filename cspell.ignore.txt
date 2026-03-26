@@ -109,6 +109,7 @@ langkify
 Langkify
 languagedetector
 levelname
+lifo
 linkify
 litlbyte
 Lngs
