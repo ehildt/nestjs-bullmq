@@ -1,5 +1,11 @@
 # @ehildt/nestjs-bullmq
 
+## 1.0.2
+
+### Patch Changes
+
+- f1a7810: fixed subpath exports for main
+
 ## 1.0.1
 
 ### Patch Changes
