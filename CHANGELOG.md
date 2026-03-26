@@ -1,5 +1,11 @@
 # @ehildt/nestjs-bullmq
 
+## 1.0.1
+
+### Patch Changes
+
+- 4603c4a: added ignoreDeprecations to tsconfig and updated the package.json
+
 ## 1.0.0
 
 ### Major Changes

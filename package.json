@@ -1,7 +1,7 @@
 {
   "name": "@ehildt/nestjs-bullmq",
   "description": "A NestJS module for BullMQ integration with configuration types and validation schemas.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "type": "module",
   "exports": {
