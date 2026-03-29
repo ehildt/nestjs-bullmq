@@ -1,5 +1,11 @@
 # @ehildt/nestjs-bullmq
 
+## 1.0.4
+
+### Patch Changes
+
+- f956ba0: added global field to queues
+
 ## 1.0.2
 
 ### Patch Changes
