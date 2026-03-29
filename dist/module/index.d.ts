@@ -5,6 +5,7 @@ import 'ioredis';
 
 type BullMQConfigFactory = (...deps: any[]) => Promise<BullMQConfig>;
 type BullMQModuleProps = {
+    imports?: any[];
     global?: boolean;
     inject: Array<any>;
     queues: BullMQQueue[];

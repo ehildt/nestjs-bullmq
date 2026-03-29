@@ -22,6 +22,7 @@ var BullMQModule = class {
             const queueName = typeof queue === "string" ? queue : queue.name;
             const queueConnection = typeof queue === "object" ? queue.connection : void 0;
             return {
+              global: options.global,
               name: queueName,
               inject: options.inject,
               useFactory: async (...deps) => {
@@ -33,7 +34,8 @@ var BullMQModule = class {
               }
             };
           })
-        )
+        ),
+        ...options.imports ?? []
       ]
     };
   }
