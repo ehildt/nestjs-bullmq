@@ -17,13 +17,14 @@ var BullMQModule = class {
       global: options.global,
       providers: options.processors,
       imports: [
+        ...options.imports ?? [],
         BullModule.registerQueueAsync(
           ...options.queues.map((queue) => {
             const queueName = typeof queue === "string" ? queue : queue.name;
             const queueConnection = typeof queue === "object" ? queue.connection : void 0;
             return {
-              global: options.global,
               name: queueName,
+              global: options.global,
               inject: options.inject,
               useFactory: async (...deps) => {
                 const config = await options.useBullFactory(...deps);
@@ -34,9 +35,8 @@ var BullMQModule = class {
               }
             };
           })
-        ),
-        ...options.imports ?? []
-      ]
+        )
+      ]?.filter(Boolean)
     };
   }
 };

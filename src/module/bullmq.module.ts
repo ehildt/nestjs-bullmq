@@ -1,18 +1,7 @@
 import { BullModule } from "@nestjs/bullmq";
-import { DynamicModule, Module, Provider } from "@nestjs/common";
+import { DynamicModule, Module } from "@nestjs/common";
 
-import { BullMQConfig, BullMQQueue } from "../models/bullmq.model.ts";
-
-type BullMQConfigFactory = (...deps: any[]) => Promise<BullMQConfig>;
-
-type BullMQModuleProps = {
-  imports?: any[];
-  global?: boolean;
-  inject: Array<any>;
-  queues: BullMQQueue[];
-  processors: Array<Provider>;
-  useBullFactory: BullMQConfigFactory;
-};
+import { BullMQModuleProps } from "../models/bullmq.model.ts";
 
 @Module({})
 export class BullMQModule {
@@ -23,27 +12,26 @@ export class BullMQModule {
       global: options.global,
       providers: options.processors,
       imports: [
+        ...(options.imports ?? []),
         BullModule.registerQueueAsync(
           ...options.queues.map((queue) => {
             const queueName = typeof queue === "string" ? queue : queue.name;
             const queueConnection = typeof queue === "object" ? queue.connection : undefined;
 
             return {
-              global: options.global,
               name: queueName,
+              global: options.global,
               inject: options.inject,
               useFactory: async (...deps: any[]) => {
-                const config = await options.useBullFactory(...deps);
                 return {
-                  ...config,
+                  ...((await options.useBullFactory(...deps)) ?? {}),
                   ...(queueConnection && { connection: queueConnection }),
                 };
               },
             };
           }),
         ),
-        ...(options.imports ?? []),
-      ],
+      ]?.filter(Boolean),
     };
   }
 }
