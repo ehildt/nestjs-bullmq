@@ -17,6 +17,7 @@ describe("BullMQModule", () => {
     it("should create a dynamic module", async () => {
       const mockConfig = { connection: { host: "localhost" } };
       const module = BullMQModule.registerAsync({
+        imports: [],
         inject: [],
         queues: ["test-queue"],
         processors: [],
@@ -31,6 +32,7 @@ describe("BullMQModule", () => {
     it("should set global option when provided", () => {
       const module = BullMQModule.registerAsync({
         inject: [],
+        imports: [],
         queues: ["test-queue"],
         processors: [],
         useBullFactory: async () => ({}),
@@ -43,6 +45,7 @@ describe("BullMQModule", () => {
     it("should not set global when not provided", () => {
       const module = BullMQModule.registerAsync({
         inject: [],
+        imports: [],
         queues: ["test-queue"],
         processors: [],
         useBullFactory: async () => ({}),
@@ -54,6 +57,7 @@ describe("BullMQModule", () => {
     it("should export BullModule", () => {
       const module = BullMQModule.registerAsync({
         inject: [],
+        imports: [],
         queues: ["test-queue"],
         processors: [],
         useBullFactory: async () => ({}),
@@ -66,6 +70,7 @@ describe("BullMQModule", () => {
       const mockProcessor = { provide: "TEST_PROCESSOR", useValue: {} };
       const module = BullMQModule.registerAsync({
         inject: [],
+        imports: [],
         queues: ["test-queue"],
         processors: [mockProcessor],
         useBullFactory: async () => ({}),
@@ -77,6 +82,7 @@ describe("BullMQModule", () => {
     it("should handle queue as string", () => {
       const module = BullMQModule.registerAsync({
         inject: ["CONFIG_TOKEN"],
+        imports: [],
         queues: ["my-queue"],
         processors: [],
         useBullFactory: async () => ({}),
@@ -92,6 +98,7 @@ describe("BullMQModule", () => {
       };
       const module = BullMQModule.registerAsync({
         inject: ["CONFIG_TOKEN"],
+        imports: [],
         queues: [queueConfig],
         processors: [],
         useBullFactory: async () => ({}),
@@ -103,6 +110,7 @@ describe("BullMQModule", () => {
     it("should handle multiple queues", () => {
       const module = BullMQModule.registerAsync({
         inject: [],
+        imports: [],
         queues: ["queue-1", "queue-2", "queue-3"],
         processors: [],
         useBullFactory: async () => ({}),
@@ -115,6 +123,7 @@ describe("BullMQModule", () => {
       const inject = ["ConfigService"];
       const module = BullMQModule.registerAsync({
         inject,
+        imports: [],
         queues: ["test-queue"],
         processors: [],
         useBullFactory: async () => ({}),

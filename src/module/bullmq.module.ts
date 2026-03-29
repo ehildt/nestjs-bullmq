@@ -6,6 +6,7 @@ import { BullMQConfig, BullMQQueue } from "../models/bullmq.model.ts";
 type BullMQConfigFactory = (...deps: any[]) => Promise<BullMQConfig>;
 
 type BullMQModuleProps = {
+  imports?: any[];
   global?: boolean;
   inject: Array<any>;
   queues: BullMQQueue[];
@@ -28,6 +29,7 @@ export class BullMQModule {
             const queueConnection = typeof queue === "object" ? queue.connection : undefined;
 
             return {
+              global: options.global,
               name: queueName,
               inject: options.inject,
               useFactory: async (...deps: any[]) => {
@@ -40,6 +42,7 @@ export class BullMQModule {
             };
           }),
         ),
+        ...(options.imports ?? []),
       ],
     };
   }
