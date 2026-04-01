@@ -94,6 +94,10 @@ For configuration options and types, see [Configuration](./Configuration.md).
 | `BullMQModule` | Dynamic NestJS module for BullMQ |
 | `BullMQConfig` | Type for configuration options |
 | `BullMQConfigSchema` | Joi validation schema for config |
+| `Queue` | Type for queue definition (string or config object) |
+| `QueueConfig` | Type for queue configuration options |
+| `BullMQConfigFactory` | Type for factory function |
+| `BullMQModuleProps` | Type for BullMQModule options |
 
 ## Related
 

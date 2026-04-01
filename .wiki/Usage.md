@@ -6,7 +6,7 @@ This guide covers setting up the module, creating processors, and adding jobs to
 
 ```typescript
 // app.module.ts
-import { BullMQModule } from "@ehildt/nestjs-bullmq";
+import { BullMQModule, Queue } from "@ehildt/nestjs-bullmq";
 import { Module } from "@nestjs/common";
 
 import { PostsProcessor } from "./processors/posts.processor";
@@ -17,7 +17,7 @@ import { PostsProcessor } from "./processors/posts.processor";
       global: true,
       inject: [],
       processors: [PostsProcessor],
-      queues: ["broadcast-post"],
+      queues: ["broadcast-post"] as Queue[], // or [{ name: "broadcast-post", connection: {...} }]
       useBullFactory: async () => ({
         connection: {
           host: "localhost",
@@ -28,6 +28,22 @@ import { PostsProcessor } from "./processors/posts.processor";
   ],
 })
 export class AppModule {}
+```
+
+### Queue Configuration
+
+Queues can be defined as strings or configuration objects. Use configuration objects to override the factory connection per queue:
+
+```typescript
+BullMQModule.registerAsync({
+  queues: [
+    "queue-1", // String queue name
+    { name: "queue-2", connection: { host: "queue-specific-host" } }, // Per-queue connection
+  ],
+  useBullFactory: async () => ({
+    connection: { host: "default-host" }, // Used for "queue-1"
+  }),
+})
 ```
 
 ## Why Register Queues?
@@ -94,7 +110,7 @@ BullMQModule.registerAsync({
 })
 ```
 
-This library provides the `BullMQConfig` type and `BullMQConfigSchema` for validation. See [Configuration](./Configuration.md) for the full type definition.
+This library provides the `BullMQConfig` type and `BullMQConfigSchema` for validation. See [Configuration](./Configuration.md) for the full type definition and the `Queue` type for queue configuration options.
 
 For production apps, [`@ehildt/nestjs-config-factory`](https://github.com/ehildt/nestjs-config-factory) provides validation and caching helpers:
 

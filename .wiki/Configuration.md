@@ -14,8 +14,50 @@ This library provides the `BullMQConfig` type and `BullMQConfigSchema` for valid
 
 | Property | Type | Required | Description |
 |----------|------|----------|-------------|
-| `defaultJobOptions` | `DefaultJobOptions` | Yes | Default options for all jobs in the queue |
-| `connection` | `RedisOptions` | Yes | Redis connection configuration |
+| `defaultJobOptions` | `DefaultJobOptions` | No | Default options for all jobs in the queue |
+| `connection` | `RedisOptions` | No | Redis connection configuration |
+
+---
+
+## Queue
+
+Type representing a queue definition. Can be either a queue name (string) or a queue configuration object.
+
+```typescript
+import { Queue, QueueConfig } from "@ehildt/nestjs-bullmq";
+
+// String queue name
+const queue1: Queue = "my-queue";
+
+// Queue config object
+const queue2: Queue = { name: "my-queue", connection: { host: "localhost" } };
+```
+
+### QueueConfig
+
+| Property | Type | Required | Description |
+|----------|------|----------|-------------|
+| `name` | `string` | Yes | The name of the queue |
+| `connection` | `RedisOptions` | No | Redis connection configuration (overrides factory connection) |
+
+---
+
+## BullMQConfigFactory
+
+Type representing the factory function used to create BullMQConfig.
+
+```typescript
+import { BullMQConfigFactory } from "@ehildt/nestjs-bullmq";
+
+const factory: BullMQConfigFactory = async () => ({
+  connection: { host: "localhost" },
+});
+
+// Or synchronous:
+const factorySync: BullMQConfigFactory = () => ({
+  connection: { host: "localhost" },
+});
+```
 
 ### DefaultJobOptions
 
