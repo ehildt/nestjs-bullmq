@@ -30,7 +30,7 @@ describe("BullMQModule", () => {
         inject: [],
         queues: ["test-queue"],
         processors: [],
-        useBullFactory: async () => mockConfig,
+        useFactory: async () => mockConfig,
       });
 
       expect(module.module).toBe(BullMQModule);
@@ -44,7 +44,7 @@ describe("BullMQModule", () => {
         imports: [],
         queues: ["test-queue"],
         processors: [],
-        useBullFactory: async () => ({}),
+        useFactory: async () => ({}),
         global: true,
       });
 
@@ -57,7 +57,7 @@ describe("BullMQModule", () => {
         imports: [],
         queues: ["test-queue"],
         processors: [],
-        useBullFactory: async () => ({}),
+        useFactory: async () => ({}),
       });
 
       expect(module.global).toBeUndefined();
@@ -69,7 +69,7 @@ describe("BullMQModule", () => {
         imports: [],
         queues: ["test-queue"],
         processors: [],
-        useBullFactory: async () => ({}),
+        useFactory: async () => ({}),
       });
 
       expect(module.exports).toEqual([BullModule]);
@@ -82,7 +82,7 @@ describe("BullMQModule", () => {
         imports: [],
         queues: ["test-queue"],
         processors: [mockProcessor],
-        useBullFactory: async () => ({}),
+        useFactory: async () => ({}),
       });
 
       expect(module.providers).toContain(mockProcessor);
@@ -94,7 +94,7 @@ describe("BullMQModule", () => {
         imports: [],
         queues: ["my-queue"],
         processors: [],
-        useBullFactory: async () => ({}),
+        useFactory: async () => ({}),
       });
 
       expect(module.imports).toBeDefined();
@@ -110,7 +110,7 @@ describe("BullMQModule", () => {
         imports: [],
         queues: [queueConfig],
         processors: [],
-        useBullFactory: async () => ({}),
+        useFactory: async () => ({}),
       });
 
       expect(module.imports).toBeDefined();
@@ -122,7 +122,7 @@ describe("BullMQModule", () => {
         imports: [],
         queues: ["queue-1", "queue-2", "queue-3"],
         processors: [],
-        useBullFactory: async () => ({}),
+        useFactory: async () => ({}),
       });
 
       expect(module.imports).toBeDefined();
@@ -135,7 +135,7 @@ describe("BullMQModule", () => {
         imports: [],
         queues: ["test-queue"],
         processors: [],
-        useBullFactory: async () => ({}),
+        useFactory: async () => ({}),
       });
 
       expect(module.imports).toBeDefined();
@@ -148,7 +148,7 @@ describe("BullMQModule", () => {
         imports: [],
         queues: [{ name: "test-queue", connection: queueConnection }],
         processors: [],
-        useBullFactory: async () => ({}),
+        useFactory: async () => ({}),
       });
 
       const bullModuleResult = module.imports![0] as { imports: unknown[] };
@@ -169,7 +169,7 @@ describe("BullMQModule", () => {
         imports: [],
         queues: [{ name: "test-queue", connection: queueConnection }],
         processors: [],
-        useBullFactory: async () => factoryConfig,
+        useFactory: async () => factoryConfig,
       });
 
       const bullModuleResult = module.imports![0] as { imports: unknown[] };
@@ -190,7 +190,7 @@ describe("BullMQModule", () => {
         imports: [],
         queues: ["test-queue"],
         processors: [],
-        useBullFactory: async () => ({}),
+        useFactory: async () => ({}),
       });
 
       const bullModuleResult = module.imports![0] as { imports: unknown[] };
@@ -208,7 +208,7 @@ describe("BullMQModule", () => {
         imports: [],
         queues: ["my-queue-name"],
         processors: [],
-        useBullFactory: async () => ({}),
+        useFactory: async () => ({}),
       });
 
       const bullModuleResult = module.imports![0] as { imports: unknown[] };
@@ -223,7 +223,7 @@ describe("BullMQModule", () => {
         imports: [],
         queues: ["test-queue"],
         processors: [],
-        useBullFactory: async () => ({}),
+        useFactory: async () => ({}),
       });
 
       const bullModuleResult = module.imports![0] as { imports: unknown[] };
@@ -239,7 +239,7 @@ describe("BullMQModule", () => {
         imports: [],
         queues: ["test-queue"],
         processors: [],
-        useBullFactory: async () => ({}),
+        useFactory: async () => ({}),
       });
 
       const bullModuleResult = module.imports![0] as { imports: unknown[] };
@@ -256,7 +256,7 @@ describe("BullMQModule", () => {
         imports: [CustomModule],
         queues: ["test-queue"],
         processors: [],
-        useBullFactory: async () => ({}),
+        useFactory: async () => ({}),
       });
 
       expect(module.imports![0]).toBe(CustomModule);
@@ -269,7 +269,7 @@ describe("BullMQModule", () => {
         imports: [],
         queues: [{ name: "queue-1", connection: { host: "host1" } }, { name: "queue-2" }, "queue-3"],
         processors: [],
-        useBullFactory: async () => ({}),
+        useFactory: async () => ({}),
       });
 
       const bullModuleResult = module.imports![0] as { imports: unknown[] };
@@ -302,7 +302,7 @@ describe("BullMQModule", () => {
           imports: [],
           queues: ["test-queue"],
           processors: [],
-          useBullFactory: async () => ({ connection: { host: "localhost" } }),
+          useFactory: async () => ({ connection: { host: "localhost" } }),
         });
 
         expect(bullMQModule.module).toBe(BullMQModule);

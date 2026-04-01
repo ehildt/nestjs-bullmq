@@ -22,5 +22,5 @@ export type BullMQModuleProps = {
   inject: Array<any>;
   queues: Queue[];
   processors: Array<Provider>;
-  useBullFactory: BullMQConfigFactory;
+  useFactory: BullMQConfigFactory;
 };

@@ -24,7 +24,7 @@ export class BullMQModule {
               inject: options.inject,
               useFactory: async (...deps: any[]) => {
                 return {
-                  ...((await options.useBullFactory(...deps)) ?? {}),
+                  ...((await options.useFactory(...deps)) ?? {}),
                   ...(queueConnection && { connection: queueConnection }),
                 };
               },
