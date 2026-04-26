@@ -1,5 +1,11 @@
 # @ehildt/nestjs-bullmq
 
+## 1.1.3
+
+### Patch Changes
+
+- 7d6a3e0: Bump devDependencies and fix CI workflows: add missing `actions: read` permission and `actions/download-artifact` step in release CI; add custom token to automated dependency update PR; update pre-push hooks to include `test:cov` and `depcheck` checks.
+
 ## 1.1.0
 
 ### Minor Changes
