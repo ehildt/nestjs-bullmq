@@ -1,5 +1,28 @@
 # @ehildt/nestjs-bullmq
 
+## 1.1.4
+
+### Patch Changes
+
+- a46f5c6: chore: add prettier as a direct devDependency
+
+  - Declare `prettier` (^3.9.6) in devDependencies — it was previously only
+    available transitively via `eslint-plugin-prettier`.
+  - Add the prettier badge to `depbadgerc.yml` and refresh README badges to the
+    current dependency versions.
+
+- 9d2ffc6: chore: modernize CI/CD and migrate husky hooks
+
+  - Extract shared lint/build/test pipeline into a reusable `ci.yml` workflow
+    used by both the non-release and release pipelines (mirrors ckir-helpers).
+  - Bump GitHub Actions to latest majors (checkout@v7, setup-node@v7,
+    pnpm/action-setup@v6, upload/download-artifact, codecov@v7) and Node 24.
+  - Pin pnpm via `packageManager` (pnpm@11.22.0) and approve required build
+    scripts in `pnpm-workspace.yaml`.
+  - `ncu-update` now syncs the lockfile and regenerates README badges.
+  - Migrate `.husky` hooks from ckir.io-visions (shared `prepare.sh`, depcheck
+    in pre-push, commit message format/length checks).
+
 ## 1.1.3
 
 ### Patch Changes
