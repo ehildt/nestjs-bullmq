@@ -1,7 +1,7 @@
-import { BullModule } from "@nestjs/bullmq";
-import { DynamicModule, Module } from "@nestjs/common";
+import { BullModule } from '@nestjs/bullmq';
+import { DynamicModule, Module } from '@nestjs/common';
 
-import { BullMQModuleProps } from "../models/bullmq.model.ts";
+import { BullMQModuleProps } from '../models/bullmq.model.ts';
 
 @Module({})
 export class BullMQModule {
@@ -15,8 +15,8 @@ export class BullMQModule {
         ...(options.imports ?? []),
         BullModule.registerQueueAsync(
           ...options.queues.map((queue) => {
-            const queueName = typeof queue === "string" ? queue : queue.name;
-            const queueConnection = typeof queue === "object" ? queue.connection : undefined;
+            const queueName = typeof queue === 'string' ? queue : queue.name;
+            const queueConnection = typeof queue === 'object' ? queue.connection : undefined;
 
             return {
               name: queueName,

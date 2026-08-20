@@ -1,6 +1,6 @@
-import Joi from "joi";
+import Joi from 'joi';
 
-import { BullMQConfig } from "../models/bullmq.model.ts";
+import { BullMQConfig } from '../models/bullmq.model.ts';
 
 export const BullMQConfigSchema = Joi.object<BullMQConfig>({
   defaultJobOptions: Joi.object({
@@ -18,15 +18,15 @@ export const BullMQConfigSchema = Joi.object<BullMQConfig>({
       count: Joi.number().min(0).optional(),
     }).optional(),
     backoff: Joi.object({
-      type: Joi.string().valid("exponential", "fixed").optional(),
+      type: Joi.string().valid('exponential', 'fixed').optional(),
       delay: Joi.number().min(0).optional(),
     }).optional(),
   }).optional(),
   connection: Joi.object({
     enableReadyCheck: Joi.boolean().optional(),
     host: Joi.string().hostname().optional(),
-    password: Joi.string().allow("").optional(),
-    username: Joi.string().allow("").optional(),
+    password: Joi.string().allow('').optional(),
+    username: Joi.string().allow('').optional(),
     port: Joi.number().min(1).max(65535).optional(),
     connectTimeout: Joi.number().min(1000).optional(),
     commandTimeout: Joi.number().min(1000).optional(),
