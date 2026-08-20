@@ -1,4 +1,4 @@
-integrity: 1630fa26f87115f5fdb88361c4f26aa779f7f621f5d35c81e7f76e08c06222fd
+integrity: 647c71f61c27f5219bd053b656201453fb572cdcc5e4940a2919ae8db387826d
 # yaml-language-server: $schema=https://raw.githubusercontent.com/ehildt/depbadge/refs/heads/main/depbadgerc.schema.json
 
 target: README.md
@@ -13,7 +13,7 @@ dependenciesLayout: &DEPENDENCIES_LAYOUT
   showHeader: false
 
 dependenciesStyle: &DEPENDENCIES_STYLE
-  labelColor: "333"
+  labelColor: '333'
   isError: false
   namedLogo: npm
   logoWidth: 40
@@ -21,7 +21,7 @@ dependenciesStyle: &DEPENDENCIES_STYLE
   cacheSeconds: 3600
 
 statusBadgesStyle: &STATUS_BADGES_STYLE
-  labelColor: "333"
+  labelColor: '333'
   isError: false
   namedLogo: npm
   logoWidth: 40
@@ -38,16 +38,16 @@ peerDependencies:
     <<: *DEPENDENCIES_STYLE
     style: flat
   items:
-    - name: "@nestjs/bullmq"
+    - name: '@nestjs/bullmq'
       namedLogo: npm
       link: https://github.com/nestjs/nest
-    - name: "@nestjs/common"
+    - name: '@nestjs/common'
       namedLogo: npm
       link: https://github.com/nestjs/nest
-    - name: "bullmq"
+    - name: 'bullmq'
       namedLogo: npm
       link: https://github.com/taskforcesh/bullmq
-    - name: "ioredis"
+    - name: 'ioredis'
       namedLogo: npm
       link: https://github.com/luin/ioredis
     - name: joi
@@ -67,15 +67,15 @@ devDependencies:
     <<: *DEPENDENCIES_STYLE
     style: flat-square
   items:
-    - name: "@changesets/cli"
+    - name: '@changesets/cli'
       namedLogo: npm
-    - name: "@eslint/js"
+    - name: '@eslint/js'
       namedLogo: eslint
-    - name: "@types/eslint"
+    - name: '@types/eslint'
       namedLogo: eslint
-    - name: "@types/node"
+    - name: '@types/node'
       namedLogo: node
-    - name: "@vitest/coverage-v8"
+    - name: '@vitest/coverage-v8'
       namedLogo: vitest
     - name: depcheck
       namedLogo: npm
@@ -101,6 +101,8 @@ devDependencies:
       namedLogo: npm
     - name: npm-check-updates
       namedLogo: npm
+    - name: prettier
+      namedLogo: prettier
     - name: rimraf
       namedLogo: npm
     - name: ts-unused-exports
